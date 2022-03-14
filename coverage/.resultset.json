@@ -5,6 +5,7 @@
         "lines": [
           1,
           1,
+          1,
           null,
           1,
           1,
@@ -16,6 +17,42 @@
           null,
           null,
           1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null
+        ]
+      },
+      "/Users/Valentina/Projects/makers/makers_projects/bookmark_manager/lib/bookmark.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/Valentina/Projects/makers/makers_projects/bookmark_manager/spec/bookmark_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
           null
         ]
       },
@@ -28,8 +65,20 @@
           null,
           null
         ]
+      },
+      "/Users/Valentina/Projects/makers/makers_projects/bookmark_manager/spec/features/view_bookmarks_spec.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1647271370
+    "timestamp": 1647274812
   }
 }
