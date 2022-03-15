@@ -1,6 +1,21 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/Valentina/Projects/makers/makers_projects/bookmark_manager/spec/setup_test_database.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          3,
+          null,
+          3,
+          null,
+          3,
+          null,
+          null
+        ]
+      },
       "/Users/Valentina/Projects/makers/makers_projects/bookmark_manager/app.rb": {
         "lines": [
           1,
@@ -19,6 +34,7 @@
           1,
           1,
           1,
+          1,
           null,
           null,
           1,
@@ -31,10 +47,15 @@
           null,
           1,
           null,
+          1,
+          2,
           2,
           null,
+          0,
           null,
           null,
+          2,
+          8,
           null,
           null
         ]
@@ -46,6 +67,12 @@
           1,
           1,
           1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
           1,
           1,
           1,
@@ -69,8 +96,18 @@
       "/Users/Valentina/Projects/makers/makers_projects/bookmark_manager/spec/features/view_bookmarks_spec.rb": {
         "lines": [
           1,
+          null,
           1,
           1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
           1,
           1,
           1,
@@ -79,6 +116,6 @@
         ]
       }
     },
-    "timestamp": 1647274812
+    "timestamp": 1647360195
   }
 }

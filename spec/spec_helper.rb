@@ -8,7 +8,17 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 ])
 SimpleCov.start
 
-ENV['RACK_ENV']='test'
+require_relative './setup_test_database'
+
+ENV['ENVIRONMENT'] = 'test'
+
+RSpec.configure do |config|
+  config.before(:each) do
+    setup_test_database
+  end
+end
+
+ENV['RACK_ENV'] = 'test'
 require 'capybara/rspec'
 # require 'features/web_helpers'
 require_relative '../app'
