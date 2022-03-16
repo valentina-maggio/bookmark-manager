@@ -19,7 +19,7 @@ describe Bookmark do
 
   describe '#create' do
     it 'creates a new bookmark' do
-      Bookmark.create(url: 'abc.com')
+      Bookmark.create(url: 'abc.com', title: 'ABC')
       expect(Bookmark.all).to include 'abc.com'
     end
   end

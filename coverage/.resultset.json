@@ -33,13 +33,13 @@
           null,
           1,
           1,
-          1,
+          0,
           null,
           null,
           1,
-          2,
-          2,
-          2,
+          1,
+          1,
+          1,
           null,
           null,
           null,
@@ -54,24 +54,24 @@
           1,
           null,
           1,
-          4,
-          4,
+          3,
+          3,
           null,
           0,
           null,
           null,
-          4,
-          12,
+          3,
+          10,
           null,
           null,
           1,
-          5,
-          5,
+          4,
+          4,
           null,
           0,
           null,
           null,
-          5,
+          4,
           null,
           null
         ]
@@ -109,6 +109,7 @@
       },
       "/Users/Valentina/Projects/makers/makers_projects/bookmark_manager/spec/features/add_bookmarks_spec.rb": {
         "lines": [
+          1,
           1,
           1,
           1,
@@ -165,6 +166,6 @@
         ]
       }
     },
-    "timestamp": 1647441206
+    "timestamp": 1647442697
   }
 }

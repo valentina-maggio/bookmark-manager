@@ -5,9 +5,9 @@ feature 'can view bookmarks' do
 
     connection = PG.connect(dbname: 'bookmark_manager_test')
       
-    Bookmark.create(url: "http://www.makersacademy.com")
-    Bookmark.create(url: "http://www.destroyallsoftware.com")
-    Bookmark.create(url: "http://www.google.com")
+    Bookmark.create(url: "http://www.makersacademy.com", title: "Makers")
+    Bookmark.create(url: "http://www.destroyallsoftware.com", title: "DAS")
+    Bookmark.create(url: "http://www.google.com", title: "Google")
 
     visit '/'
     click_button('List bookmarks')
