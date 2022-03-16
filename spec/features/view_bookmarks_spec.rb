@@ -9,7 +9,8 @@ feature 'can view bookmarks' do
     Bookmark.create(url: "http://www.destroyallsoftware.com")
     Bookmark.create(url: "http://www.google.com")
 
-    visit '/bookmarks/index'
+    visit '/'
+    click_button('List bookmarks')
 
     expect(page).to have_content "http://www.makersacademy.com"
     expect(page).to have_content "http://www.destroyallsoftware.com"
