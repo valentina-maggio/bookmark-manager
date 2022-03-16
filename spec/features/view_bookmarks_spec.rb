@@ -12,8 +12,8 @@ feature 'can view bookmarks' do
     visit '/'
     click_button('List bookmarks')
 
-    expect(page).to have_content "http://www.makersacademy.com"
-    expect(page).to have_content "http://www.destroyallsoftware.com"
-    expect(page).to have_content "http://www.google.com"
+    expect(page).to have_link "Makers", href: "http://www.makersacademy.com"
+    expect(page).to have_link "DAS", href: "http://www.destroyallsoftware.com"
+    expect(page).to have_link "Google", href: "http://www.google.com"
   end
 end

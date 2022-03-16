@@ -1,6 +1,13 @@
 require 'pg'
 
 class Bookmark
+  attr_reader :title, :url, :id
+
+  def initialize(title:, url:, id:) 
+    @title = title
+    @url = url
+    @id = id
+  end
 
   def self.all
     if ENV['ENVIRONMENT'] == 'test'
@@ -10,7 +17,7 @@ class Bookmark
     end
 
     result = connection.exec("SELECT * FROM bookmarks")
-    result.map { |bookmark| bookmark['url'] }
+    result.map { |bookmark| Bookmark.new(title: bookmark['title'], url: bookmark['url'], id: bookmark['id']) }
   end
 
   def self.create(url:, title:)
@@ -20,6 +27,7 @@ class Bookmark
       connection = PG.connect(dbname: 'bookmark_manager')
     end
 
-    connection.exec("INSERT INTO bookmarks (url) VALUES('#{url}')")
+    result = connection.exec_params("INSERT INTO bookmarks (url, title) VALUES($1, $2) RETURNING id, title, url;", [url, title])
+    Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 end

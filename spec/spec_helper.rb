@@ -12,6 +12,7 @@ ENV['ENVIRONMENT'] = 'test'
 require_relative './setup_test_database'
 require 'capybara/rspec'
 require_relative '../app'
+require_relative './database_helpers'
 
 Capybara.app = BookmarkManager
 

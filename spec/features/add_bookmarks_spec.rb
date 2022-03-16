@@ -5,6 +5,6 @@ feature 'can add bookmarks' do
     fill_in('url', with: 'abc.com')
     fill_in('title', with: 'ABC')
     click_button('Save')
-    expect(page).to have_content 'abc.com'
+    expect(page).to have_content 'ABC'
   end
 end
