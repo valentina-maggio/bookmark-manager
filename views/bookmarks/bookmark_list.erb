@@ -4,6 +4,8 @@
     <% @bookmarks.each do |bookmark| %>
       <li>
         <a target="_blank" href="<%= bookmark.url %>"> <%= bookmark.title %> </a>
+        <br>
+        <br>
         <form action="/bookmarks/<%= bookmark.id %>/update" method="get">
           <input type="submit" value="Update"/>
         </form>
