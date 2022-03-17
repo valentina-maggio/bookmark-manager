@@ -4,13 +4,12 @@ describe Bookmark do
   
   describe '#all' do
     it 'returns all bookmarks' do
-      connection = PG.connect(dbname: 'bookmark_manager_test')
-      
-      connection.exec("INSERT INTO bookmarks (url, title) VALUES ('http://www.makersacademy.com', 'Makers');")
-      connection.exec("INSERT INTO bookmarks (url, title) VALUES('http://www.destroyallsoftware.com', 'DAS');")
-      connection.exec("INSERT INTO bookmarks (url, title) VALUES('http://www.google.com', 'Google');")
+      Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers')
+      Bookmark.create(url: 'http://www.destroyallsoftware.com', title: 'Destroy All Software')
+      Bookmark.create(url: 'http://www.google.com', title: 'Google')
 
       bookmarks = Bookmark.all
+      
       expect(bookmarks.first).to be_a Bookmark
       expect(bookmarks.first.title).to eq 'Makers'
       expect(bookmarks.last.url).to eq 'http://www.google.com'
@@ -19,20 +18,25 @@ describe Bookmark do
 
   describe '#create' do
     it 'creates a new bookmark' do
-      bookmark = Bookmark.create(url: 'abc.com', title: 'ABC')
+      bookmark = Bookmark.create(url: 'http://www.google.com', title: 'Google')
       persisted_data = persisted_data(id: bookmark.id)
 
       expect(bookmark).to be_a Bookmark
       expect(bookmark.id).to eq persisted_data['id']
-      expect(bookmark.title).to eq 'ABC'
-      expect(bookmark.url).to eq 'abc.com'
+      expect(bookmark.title).to eq 'Google'
+      expect(bookmark.url).to eq 'http://www.google.com'
+    end
+
+    it 'does not create a new bookmark if the url is invalid' do
+      bookmark = Bookmark.create(url: 'not a real bookmark', title: 'not a real bookmark')
+      expect(bookmark).not_to be_a Bookmark
     end
   end
 
   describe '#delete' do
     it 'deletes a bookmark' do
-      bookmark = Bookmark.create(url: 'abc.com', title: 'ABC')
-      expect(bookmark.title).to eq 'ABC'
+      bookmark = Bookmark.create(url: 'http://www.google.com', title: 'Google')
+      expect(bookmark.title).to eq 'Google'
       Bookmark.delete(id: bookmark.id)
       expect(Bookmark.all).to be_empty
     end
@@ -40,21 +44,21 @@ describe Bookmark do
 
   describe '#update' do
     it 'updates a bookmark' do
-      bookmark = Bookmark.create(url: 'abc.com', title: 'ABC')
-      expect(bookmark.title).to eq 'ABC'
-      Bookmark.update(id: bookmark.id, title: 'CCC', url: 'abc.com')
-      expect(Bookmark.all.first.title).to eq 'CCC'
+      bookmark = Bookmark.create(url: 'http://www.google.com', title: 'Google')
+      expect(bookmark.title).to eq 'Google'
+      Bookmark.update(id: bookmark.id, title: 'GO', url: 'http://www.google.com')
+      expect(Bookmark.all.first.title).to eq 'GO'
     end
   end
 
   describe '#find' do
     it 'finds a bookmark' do
-      bookmark = Bookmark.create(url: 'abc.com', title: 'ABC')
-      expect(bookmark.title).to eq 'ABC'
+      bookmark = Bookmark.create(url: 'http://www.google.com', title: 'Google')
+      expect(bookmark.title).to eq 'Google'
       find = Bookmark.find(id: bookmark.id)
       expect(find).to be_a Bookmark
-      expect(find.title).to eq 'ABC'
-      expect(find.url).to eq 'abc.com'
+      expect(find.title).to eq 'Google'
+      expect(find.url).to eq 'http://www.google.com'
       expect(find.id).to eq bookmark.id
     end
   end

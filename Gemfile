@@ -7,6 +7,7 @@ gem 'sinatra-contrib'
 gem 'rack'
 gem 'webrick'
 gem 'pg'
+gem "sinatra-flash"
 
 group :test do
   gem 'capybara'
