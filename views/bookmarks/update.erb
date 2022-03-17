@@ -1,0 +1,17 @@
+<h1>Update bookmark: <%= @bookmark.title%></h1>
+<br>
+<br>
+<h3>Current name:<em> <%= @bookmark.title%></em>, Current url: <em> <%= @bookmark.url%> </em></h3>
+  <form action="/bookmarks/<%= @bookmark_id %>/updated" method="post">
+    <input type="hidden" name="_method" value="PATCH"/>
+    <div> <label for="url">
+    Enter website link
+      <input type="text" name="url" required>
+    </label></div>
+    <div> <label for="title">
+    Enter website name
+      <input type="text" name="title" required>
+    </label></div>
+  <br>
+    <input type="submit" value="Save changes"/>
+  </form>

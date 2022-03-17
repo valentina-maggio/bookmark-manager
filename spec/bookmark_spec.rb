@@ -38,5 +38,25 @@ describe Bookmark do
     end
   end
 
+  describe '#update' do
+    it 'updates a bookmark' do
+      bookmark = Bookmark.create(url: 'abc.com', title: 'ABC')
+      expect(bookmark.title).to eq 'ABC'
+      Bookmark.update(id: bookmark.id, title: 'CCC', url: 'abc.com')
+      expect(Bookmark.all.first.title).to eq 'CCC'
+    end
+  end
+
+  describe '#find' do
+    it 'finds a bookmark' do
+      bookmark = Bookmark.create(url: 'abc.com', title: 'ABC')
+      expect(bookmark.title).to eq 'ABC'
+      find = Bookmark.find(id: bookmark.id)
+      expect(find).to be_a Bookmark
+      expect(find.title).to eq 'ABC'
+      expect(find.url).to eq 'abc.com'
+      expect(find.id).to eq bookmark.id
+    end
+  end
 end
 
