@@ -4,14 +4,15 @@ describe Bookmark do
   
   describe '#all' do
     it 'returns all bookmarks' do
-      Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers')
+      bookmark = Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers')
       Bookmark.create(url: 'http://www.destroyallsoftware.com', title: 'Destroy All Software')
       Bookmark.create(url: 'http://www.google.com', title: 'Google')
 
       bookmarks = Bookmark.all
-      
+
       expect(bookmarks.first).to be_a Bookmark
       expect(bookmarks.first.title).to eq 'Makers'
+      expect(bookmarks.first.id).to eq bookmark.id
       expect(bookmarks.last.url).to eq 'http://www.google.com'
     end
   end
@@ -36,8 +37,9 @@ describe Bookmark do
   describe '#delete' do
     it 'deletes a bookmark' do
       bookmark = Bookmark.create(url: 'http://www.google.com', title: 'Google')
-      expect(bookmark.title).to eq 'Google'
+
       Bookmark.delete(id: bookmark.id)
+
       expect(Bookmark.all).to be_empty
     end
   end
@@ -45,21 +47,25 @@ describe Bookmark do
   describe '#update' do
     it 'updates a bookmark' do
       bookmark = Bookmark.create(url: 'http://www.google.com', title: 'Google')
-      expect(bookmark.title).to eq 'Google'
-      Bookmark.update(id: bookmark.id, title: 'GO', url: 'http://www.google.com')
-      expect(Bookmark.all.first.title).to eq 'GO'
+      updated_bookmark = Bookmark.update(id: bookmark.id, title: 'GO', url: 'http://www.google.com')
+
+      expect(updated_bookmark).to be_a Bookmark
+      expect(updated_bookmark.title).to eq 'GO'
+      expect(updated_bookmark.id).to eq bookmark.id
+      expect(updated_bookmark.url).to eq 'http://www.google.com'
     end
   end
 
   describe '#find' do
     it 'finds a bookmark' do
       bookmark = Bookmark.create(url: 'http://www.google.com', title: 'Google')
-      expect(bookmark.title).to eq 'Google'
-      find = Bookmark.find(id: bookmark.id)
-      expect(find).to be_a Bookmark
-      expect(find.title).to eq 'Google'
-      expect(find.url).to eq 'http://www.google.com'
-      expect(find.id).to eq bookmark.id
+      
+      result = Bookmark.find(id: bookmark.id)
+
+      expect(result).to be_a Bookmark
+      expect(result.title).to eq 'Google'
+      expect(result.url).to eq 'http://www.google.com'
+      expect(result.id).to eq bookmark.id
     end
   end
 end

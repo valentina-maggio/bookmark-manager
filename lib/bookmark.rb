@@ -27,7 +27,8 @@ class Bookmark
   end
 
   def self.update(id:, title:, url:)
-    result = DatabaseConnection.query("UPDATE bookmarks SET title = $1, url = $2 WHERE id = $3;", [title, url, id])
+    result = DatabaseConnection.query("UPDATE bookmarks SET title = $1, url = $2 WHERE id = $3 RETURNING id, url, title;;", [title, url, id])
+    Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
   def self.find(id:)
