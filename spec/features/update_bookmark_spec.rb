@@ -1,13 +1,18 @@
-feature 'can update a bookmark' do
-  scenario 'updating a bookmark' do
-    Bookmark.create(title: 'Google', url: 'http://www.google.com')
-    visit('/')
-    click_button('List bookmarks')
-    click_button('Update')
-    fill_in('title', with: 'GO')
-    fill_in('url', with: 'http://www.google.com')
-    click_button('Save changes')
-    expect(page).to_not have_content('Google')
-    expect(page).to have_content('GO')
+feature 'updating a bookmark' do
+  scenario 'a user can update a bookmark' do
+    bookmark = Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
+    visit('/bookmarks')
+    expect(page).to have_link('Makers Academy', href: 'http://www.makersacademy.com')
+
+    first('.bookmark').click_button 'Edit'
+    expect(current_path).to eq "/bookmarks/#{bookmark.id}/edit"
+
+    fill_in('url', with: "http://www.snakersacademy.com")
+    fill_in('title', with: "Snakers Academy")
+    click_button('Submit')
+
+    expect(current_path).to eq '/bookmarks'
+    expect(page).not_to have_link('Makers Academy', href: 'http://www.makersacademy.com')
+    expect(page).to have_link('Snakers Academy', href: 'http://www.snakersacademy.com')
   end
 end
